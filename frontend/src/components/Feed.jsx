@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { fetchPosts } from "../lib/api";
 import { Heart, MessageCircle, Share2 } from "lucide-react";
 import useToggleLike from "../hooks/useLike";
-import * as jwtDecode from "jwt-decode";
+import jwtDecode from "jwt-decode";
 import { Link } from "react-router";
 
 const Feed = () => {
