@@ -12,7 +12,7 @@ import Layout from "./components/Layout.jsx";
 import { useThemeStore } from "./store/useThemeStore.js";
 import Post from "./pages/Post.jsx";
 import Profilepage from "./pages/Profilepage.jsx";
-import CompHomePage from "./pages/compHomePage.jsx";
+import CompHomePage from "./pages/CompHomePage.jsx";
 
 const App = () => {
   const { isLoading, authUser } = useAuthUser();
