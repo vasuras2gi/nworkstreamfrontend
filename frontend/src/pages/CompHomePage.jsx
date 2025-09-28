@@ -1,6 +1,6 @@
 import React from 'react'
 import HomePage from './HomePage'
-import UserSearchBar from '../components/userSearchBar'
+import UserSearchBar from '../components/UserSearchBar.jsx'
 
 const CompHomePage = () => {
   return (
