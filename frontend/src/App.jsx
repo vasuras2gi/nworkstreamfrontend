@@ -12,7 +12,6 @@ import Layout from "./components/Layout.jsx";
 import { useThemeStore } from "./store/useThemeStore.js";
 import Post from "./pages/Post.jsx";
 import Profilepage from "./pages/Profilepage.jsx";
-import UserSearchB from "./components/userSearchBar.jsx";
 import CompHomePage from "./pages/compHomePage.jsx";
 
 const App = () => {
