@@ -8,7 +8,8 @@ import {
     MenuIcon,
     X, 
     HomeIcon,
-    UsersIcon
+    UsersIcon,
+    Plus
 } from "lucide-react";
 import ThemeSelector from "./ThemeSelector";
 import useLogout from "../hooks/useLogout";
@@ -67,6 +68,12 @@ const Navbar = ({ onMenuClick, isSidebarOpen }) => {
                         <Link to={"/friends"} className="lg:hidden">
                             <button className="btn btn-ghost btn-circle **btn-sm**">
                                 <UsersIcon className="h-6 w-6 text-base-content opacity-70"  />
+                            </button>
+                        </Link>
+
+                        <Link to={"/upload"} className="lg:hidden">
+                            <button className="btn btn-ghost btn-circle **btn-sm**">
+                                <Plus className="h-6 w-6 text-base-content opacity-70"  />
                             </button>
                         </Link>
                         
