@@ -64,7 +64,7 @@ const Navbar = ({ onMenuClick, isSidebarOpen }) => {
                         </Link>
                         
                         {/* NEW ICON 2: CHAT/MESSAGES */}
-                        <Link to={"/friend"} className="lg:hidden">
+                        <Link to={"/friends"} className="lg:hidden">
                             <button className="btn btn-ghost btn-circle **btn-sm**">
                                 <UsersIcon className="h-6 w-6 text-base-content opacity-70"  />
                             </button>
