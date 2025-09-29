@@ -13,6 +13,7 @@ import { useThemeStore } from "./store/useThemeStore.js";
 import Post from "./pages/Post.jsx";
 import Profilepage from "./pages/Profilepage.jsx";
 import CompHomePage from "./pages/CompHomePage.jsx";
+import UploadPost from "./pages/UploadPost.jsx";
 
 const App = () => {
   const { isLoading, authUser } = useAuthUser();
@@ -57,6 +58,18 @@ const App = () => {
             isAuthenticated && isOnboarded ? (
               <Layout showSidebar={true}>
                 <NotificationsPage />
+              </Layout>
+            ) : (
+              <Navigate to={!isAuthenticated ? "/login" : "/onboarding"} />
+            )
+          }
+        />
+        <Route
+          path="/upload"
+          element={
+            isAuthenticated && isOnboarded ? (
+              <Layout showSidebar={false}>
+                <UploadPost />
               </Layout>
             ) : (
               <Navigate to={!isAuthenticated ? "/login" : "/onboarding"} />
