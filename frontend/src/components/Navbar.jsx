@@ -28,9 +28,8 @@ const Navbar = ({ onMenuClick, isSidebarOpen }) => {
             <div className="container mx-auto px-4 sm:px-6 lg:px-8 w-full"> 
                 <div className="flex items-center justify-between w-full"> 
                     
-                    {/* LEFT SIDE: MOBILE MENU BUTTON + LOGO */}
+                    {/* LEFT SIDE: MOBILE MENU BUTTON + LOGO - (Kept the original gap-3 here for visual separation) */}
                     <div className='flex items-center gap-3'>
-                         {/* MOBILE MENU TOGGLE BUTTON (Visible only on small screens) */}
                         <button 
                             className="btn btn-ghost btn-circle lg:hidden"
                             onClick={onMenuClick}
@@ -42,7 +41,6 @@ const Navbar = ({ onMenuClick, isSidebarOpen }) => {
                             )}
                         </button>
                         
-                        {/* Logo visibility is fine, but ensures it's not taking space on desktop */}
                         {(isChatPage || !isSidebarVisibleOnDesktop) && (
                             <Link to="/" className="flex items-center gap-2.5">
                                 <div className="w-20 h-10 mb-2 lg:hidden">
@@ -53,8 +51,8 @@ const Navbar = ({ onMenuClick, isSidebarOpen }) => {
                     </div>
                     
                     {/* RIGHT SIDE: ALL ICONS AND USER CONTROLS */}
-                    {/* 💡 FIX: Reduce gap to an absolute minimum (gap-0) */}
-                    <div className="flex items-center gap-0 sm:gap-1"> 
+                    {/* 💡 FIX: Set gap to zero (gap-0) to force icons together on all small screens */}
+                    <div className="flex items-center gap-0"> 
                         
                         {/* NEW ICON 1: EXPLORE/FEED */}
                         <Link to={"/"} className="lg:hidden"> 
@@ -77,7 +75,7 @@ const Navbar = ({ onMenuClick, isSidebarOpen }) => {
                             </button>
                         </Link>
                     
-                        {/* 💡 FIX: Hide Theme Selector on small screens to save space */}
+                        {/* Theme Selector - Hidden on mobile to save space (sm:hidden) */}
                         <div className="hidden sm:block"> 
                            <ThemeSelector />
                         </div>
