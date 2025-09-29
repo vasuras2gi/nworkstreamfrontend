@@ -54,7 +54,7 @@ const Navbar = ({ onMenuClick, isSidebarOpen }) => {
                     </div>
                     
                     {/* RIGHT SIDE: ALL ICONS AND USER CONTROLS */}
-                    <div className="flex items-center gap-1 sm:gap-2"> 
+                    <div className="flex items-center gap-0 sm:gap-1"> 
                         
                         {/* ------------------ NEW ICONS (Fixed Logic) ------------------ */}
                         
