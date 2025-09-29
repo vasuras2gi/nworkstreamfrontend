@@ -5,13 +5,12 @@ import {
     LogOutIcon, 
     ShipWheelIcon, 
     MessageCircleIcon,
-    MenuIcon,     // <-- NEW: Import MenuIcon
-    X             // <-- NEW: Import X (Close) icon
+    MenuIcon,
+    X 
 } from "lucide-react";
 import ThemeSelector from "./ThemeSelector";
 import useLogout from "../hooks/useLogout";
 
-// 1. ACCEPT NEW PROPS for mobile sidebar control
 const Navbar = ({ onMenuClick, isSidebarOpen }) => { 
     const { authUser } = useAuthUser();
     const location = useLocation();
@@ -31,7 +30,7 @@ const Navbar = ({ onMenuClick, isSidebarOpen }) => {
                     
                     {/* LEFT SIDE: MOBILE MENU BUTTON + LOGO */}
                     <div className='flex items-center gap-3'>
-                         {/* 2. MOBILE MENU TOGGLE BUTTON (Visible only on small screens) */}
+                         {/* MOBILE MENU TOGGLE BUTTON (Visible only on small screens) */}
                         <button 
                             className="btn btn-ghost btn-circle lg:hidden"
                             onClick={onMenuClick}
@@ -43,7 +42,7 @@ const Navbar = ({ onMenuClick, isSidebarOpen }) => {
                             )}
                         </button>
                         
-                        {/* Logo visible only on mobile/chat page, but hidden if the desktop sidebar is present */}
+                        {/* Logo visibility is fine, but ensures it's not taking space on desktop */}
                         {(isChatPage || !isSidebarVisibleOnDesktop) && (
                             <Link to="/" className="flex items-center gap-2.5">
                                 <div className="w-20 h-10 mb-2 lg:hidden">
@@ -54,26 +53,23 @@ const Navbar = ({ onMenuClick, isSidebarOpen }) => {
                     </div>
                     
                     {/* RIGHT SIDE: ALL ICONS AND USER CONTROLS */}
+                    {/* 💡 FIX: Reduce gap to an absolute minimum (gap-0) */}
                     <div className="flex items-center gap-0 sm:gap-1"> 
                         
-                        {/* ------------------ NEW ICONS (Fixed Logic) ------------------ */}
-                        
-                        {/* 3. FIX: Use 'lg:hidden' to show on mobile, hide on large screens */}
+                        {/* NEW ICON 1: EXPLORE/FEED */}
                         <Link to={"/"} className="lg:hidden"> 
                             <button className="btn btn-ghost btn-circle">
                                 <ShipWheelIcon className="h-6 w-6 text-base-content opacity-70" />
                             </button>
                         </Link>
                         
-                        {/* 3. FIX: Use 'lg:hidden' to show on mobile, hide on large screens */}
+                        {/* NEW ICON 2: CHAT/MESSAGES */}
                         <Link to={"/chat"} className="lg:hidden">
                             <button className="btn btn-ghost btn-circle">
                                 <MessageCircleIcon className="h-6 w-6 text-base-content opacity-70" />
                             </button>
                         </Link>
                         
-                        {/* ------------------ END NEW ICONS ------------------ */}
-
                         {/* Existing Notifications Icon */}
                         <Link to={"/notifications"}>
                             <button className="btn btn-ghost btn-circle">
@@ -81,7 +77,10 @@ const Navbar = ({ onMenuClick, isSidebarOpen }) => {
                             </button>
                         </Link>
                     
-                        <ThemeSelector />
+                        {/* 💡 FIX: Hide Theme Selector on small screens to save space */}
+                        <div className="hidden sm:block"> 
+                           <ThemeSelector />
+                        </div>
 
                         {/* User Avatar Link */}
                         <div className="avatar">
