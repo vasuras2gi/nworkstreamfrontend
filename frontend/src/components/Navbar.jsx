@@ -6,7 +6,9 @@ import {
     ShipWheelIcon, 
     MessageCircleIcon,
     MenuIcon,
-    X 
+    X, 
+    HomeIcon,
+    UsersIcon
 } from "lucide-react";
 import ThemeSelector from "./ThemeSelector";
 import useLogout from "../hooks/useLogout";
@@ -57,14 +59,14 @@ const Navbar = ({ onMenuClick, isSidebarOpen }) => {
                         {/* NEW ICON 1: EXPLORE/FEED */}
                         <Link to={"/"} className="lg:hidden"> 
                             <button className="btn btn-ghost btn-circle **btn-sm**">
-                                <ShipWheelIcon className="h-6 w-6 text-base-content opacity-70" />
+                                <HomeIcon className="h-6 w-6 text-base-content opacity-70" />
                             </button>
                         </Link>
                         
                         {/* NEW ICON 2: CHAT/MESSAGES */}
-                        <Link to={"/chat"} className="lg:hidden">
+                        <Link to={"/friend"} className="lg:hidden">
                             <button className="btn btn-ghost btn-circle **btn-sm**">
-                                <MessageCircleIcon className="h-6 w-6 text-base-content opacity-70" />
+                                <UsersIcon className="h-6 w-6 text-base-content opacity-70"  />
                             </button>
                         </Link>
                         
