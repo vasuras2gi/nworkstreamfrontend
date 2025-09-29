@@ -1,10 +1,14 @@
+// vite.config.js - RECOMMENDED FIX
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   plugins: [react()],
-  base: './', // important for Vercel
+  // FIX: Remove or set to absolute path '/'
+  // base: './', // <-- DELETE THIS LINE OR CHANGE IT
+  base: '/', // <-- RECOMMENDED absolute path for Vercel root deployment
   build: {
+    // ... (rest of your build config)
     rollupOptions: {
       output: {
         manualChunks: {
@@ -16,6 +20,6 @@ export default defineConfig({
         },
       },
     },
-    chunkSizeWarningLimit: 1000, // optional: increase limit to 1MB to suppress warnings
+    chunkSizeWarningLimit: 1000,
   },
 })
