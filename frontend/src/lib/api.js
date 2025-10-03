@@ -66,11 +66,17 @@ export async function getStreamToken() {
   return response.data;
 }
 
-export const fetchPosts = async () => {
-  const response = await axiosInstance.get("/post", {
-    withCredentials: true, // send cookies
+export const fetchPosts = async (cursor = null, limit = 10) => {
+  let url = `/post?limit=${limit}`;
+  if (cursor) {
+    url += `&cursor=${cursor}`;
+  }
+  
+  const response = await axiosInstance.get(url, {
+    withCredentials: true,
   });
-  return response.data;
+  // The backend now returns { posts, nextCursor, hasMore }
+  return response.data; 
 };
 
 export const toggleLike = async (postId) => {
