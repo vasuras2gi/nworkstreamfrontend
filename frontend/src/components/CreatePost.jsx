@@ -6,6 +6,7 @@ const CreatePost = () => {
   const [file, setFile] = useState(null);
 
   const fileInputRef = useRef(null); 
+  const textInputRef = useRef(null); 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -39,7 +40,7 @@ const CreatePost = () => {
           className="w-full p-2 rounded bg-gray-700 text-white mb-2"
           placeholder="What's on your mind?"
           value={text}
-          ref={fileInputRef}
+          ref={textInputRef}
           onChange={(e) => setText(e.target.value)}
         />
         <input ref={fileInputRef} type="file" onChange={(e) => setFile(e.target.files[0])} />
