@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { axiosInstance } from "../lib/axios";
 
 const CreatePost = () => {
   const [text, setText] = useState("");
   const [file, setFile] = useState(null);
+
+  const fileInputRef = useRef(null); 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -19,6 +21,11 @@ const CreatePost = () => {
       alert("Post created successfully!");
       setText("");
       setFile(null);
+
+      if (fileInputRef.current) {
+        fileInputRef.current.value = ""; 
+      }
+
     } catch (error) {
       console.error("Error creating post:", error);
     }
@@ -32,9 +39,10 @@ const CreatePost = () => {
           className="w-full p-2 rounded bg-gray-700 text-white mb-2"
           placeholder="What's on your mind?"
           value={text}
+          ref={fileInputRef}
           onChange={(e) => setText(e.target.value)}
         />
-        <input type="file" onChange={(e) => setFile(e.target.files[0])} />
+        <input ref={fileInputRef} type="file" onChange={(e) => setFile(e.target.files[0])} />
 
         <button
           type="submit"
