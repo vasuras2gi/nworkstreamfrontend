@@ -17,6 +17,8 @@ const CreatePost = () => {
         headers: { "Content-Type": "multipart/form-data" },
       });
       alert("Post created successfully!");
+      setText("");
+      setFile(null);
     } catch (error) {
       console.error("Error creating post:", error);
     }
