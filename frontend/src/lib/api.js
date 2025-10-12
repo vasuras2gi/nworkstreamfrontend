@@ -73,7 +73,7 @@ export async function getStreamToken() {
   return response.data;
 }
 
-export const fetchPosts = async (cursor = null, limit = 4) => {
+export const fetchPosts = async (cursor = null, limit = 3) => {
   let url = `/post?limit=${limit}`;
   if (cursor) {
     url += `&cursor=${cursor}`;
