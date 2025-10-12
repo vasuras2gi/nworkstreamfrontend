@@ -15,7 +15,7 @@ const UserSearchBar = () => {
     setLoading(true);
     try {
       const res = await axios.get(
-        `https://nworkstreamfrontend.vercel.app/api/users/search?q=${searchQuery}`,
+        `https://nworkstreambackend.onrender.com/api/users/search?q=${searchQuery}`,
         {withCredentials: true } // include cookie for auth
       );
 
