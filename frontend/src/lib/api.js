@@ -42,9 +42,8 @@ export async function getUserFriends() {
 // }
 
 export const getRecommendedUsers = async (filters = {}) => {
-  const res = await axios.get("/api/users", {
-    params: filters, // { city, learningLanguage }
-    withCredentials: true,
+  const res = await axiosInstance.get("/users", {
+    params: filters, // e.g. { city: "Delhi", learningLanguage: "Web Development" }
   });
   return res.data;
 };
