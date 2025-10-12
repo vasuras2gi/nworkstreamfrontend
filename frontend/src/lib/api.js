@@ -36,10 +36,18 @@ export async function getUserFriends() {
   return response.data;
 }
 
-export async function getRecommendedUsers() {
-  const response = await axiosInstance.get("/users");
-  return response.data;
-}
+// export async function getRecommendedUsers() {
+//   const response = await axiosInstance.get("/users");
+//   return response.data;
+// }
+
+export const getRecommendedUsers = async (filters = {}) => {
+  const res = await axios.get("/api/users", {
+    params: filters, // { city, learningLanguage }
+    withCredentials: true,
+  });
+  return res.data;
+};
 
 export async function getOutgoingFriendReqs() {
   const response = await axiosInstance.get("/users/outgoing-friend-requests");
