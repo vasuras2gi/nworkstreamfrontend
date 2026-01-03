@@ -5,6 +5,4 @@ const BASE_URL = "https://nworkstreambackend.onrender.com/api";
 export const axiosInstance = axios.create({
   baseURL: BASE_URL,
   withCredentials: true, // send cookies with the request
-  sameSite: "none",
-  secure: true,
 });
