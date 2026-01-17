@@ -88,6 +88,15 @@ const Navbar = ({ onMenuClick, isSidebarOpen }) => {
                         <div className="hidden sm:block"> 
                            <ThemeSelector />
                         </div>
+                        
+                        {/* createPostPage  */}
+                        <div>
+                            <Link to={"/create-post"}>
+                            <button className="btn btn-ghost btn-circle">
+                                <PlusCircle className="h-6 w-6 text-base-content opacity-70" />
+                            </button>
+                            </Link>
+                        </div>
 
                         {/* User Avatar Link - Already small enough at w-9 */}
                         <div className="avatar">

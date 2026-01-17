@@ -79,6 +79,14 @@ const App = () => {
             }
           />
           <Route
+            path="/create-post"
+            element={
+              <Layout showSidebar={true}>
+                <CreatePostPage />
+              </Layout>
+            }
+          />
+          <Route
             path="/notifications"
             element={
               isAuthenticated && isOnboarded ? (

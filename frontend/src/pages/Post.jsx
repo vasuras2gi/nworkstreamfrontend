@@ -15,9 +15,11 @@ const Post = () => {
       </div>
 
       {/* Right: Fixed Create Post (hidden on small screens, fixed on large screens) */}
-      <div className="w-80 hidden lg:block fixed top-20 right-8 h-fit">
+
+      {/* <div className="w-80 hidden lg:block fixed top-20 right-8 h-fit">
         <CreatePost />
-      </div>
+      </div> */}
+      
     </div>
   );
 };
