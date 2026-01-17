@@ -33,25 +33,49 @@ const CreatePost = () => {
   };
 
   return (
-    <div className="bg-gray-900 p-4 rounded-lg shadow-md">
-      <h2 className="text-lg font-semibold mb-3">Create Post</h2>
-      <form onSubmit={handleSubmit}>
-        <textarea
-          className="w-full p-2 rounded bg-gray-700 text-white mb-2"
-          placeholder="What's on your mind?"
-          value={text}
-          ref={textInputRef}
-          onChange={(e) => setText(e.target.value)}
-        />
-        <input ref={fileInputRef} type="file" onChange={(e) => setFile(e.target.files[0])} />
+    <>
+      <div className="bg-gray-900 p-20 m-10 justify-center align-middle">
+        <h2 className="text-lg font-semibold mb-3">Create Post</h2>
+        <form onSubmit={handleSubmit}>
+          <textarea
+            className="w-full p-2 rounded bg-gray-700 text-white mb-2"
+            placeholder="What's on your mind?"
+            value={text}
+            ref={textInputRef}
+            onChange={(e) => setText(e.target.value)}
+          />
+          <input ref={fileInputRef} type="file" onChange={(e) => setFile(e.target.files[0])} />
 
-        <button
-          type="submit"
-          className="bg-green-500 hover:bg-green-600 text-white px-4 mt-4 py-2 rounded-lg w-full"
-        > Upload
-        </button>
-      </form>
-    </div>
+          <button
+            type="submit"
+            className="bg-green-500 hover:bg-green-600 text-white px-4 mt-4 py-2 rounded-lg w-full"
+          > Upload
+          </button>
+        </form>
+      </div>>
+        <div className="bg-gray-900 p-4 rounded-lg shadow-md">
+          <h2 className="text-lg font-semibold mb-3">Create Post</h2>
+          <form onSubmit={handleSubmit}>
+            <textarea
+              className="w-full p-2 rounded bg-gray-700 text-white mb-2"
+              placeholder="What's on your mind?"
+              value={text}
+              ref={textInputRef}
+              onChange={(e) => setText(e.target.value)}
+            />
+            <input ref={fileInputRef} type="file" onChange={(e) => setFile(e.target.files[0])} />
+
+            <button
+              type="submit"
+              className="bg-green-500 hover:bg-green-600 text-white px-4 mt-4 py-2 rounded-lg w-full"
+            > Upload
+            </button>
+          </form>
+        </div>
+      </div>
+      
+    </>
+
   );
 };
 
