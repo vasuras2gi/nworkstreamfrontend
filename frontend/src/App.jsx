@@ -37,6 +37,7 @@ const CompHomePage = lazy(() => import('./pages/CompHomePage.jsx'));
 import useAuthUser from "./hooks/useAuthUser.js";
 import { Toaster } from "react-hot-toast";
 import { useThemeStore } from "./store/useThemeStore.js";
+import CreatePost from "./components/CreatePost.jsx";
 // import UserSearchB from "./components/userSearchBar.jsx";
 
 
@@ -82,7 +83,7 @@ const App = () => {
             path="/create-post"
             element={
               <Layout showSidebar={true}>
-                <CreatePostPage />
+                <CreatePost />
               </Layout>
             }
           />
