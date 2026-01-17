@@ -72,11 +72,11 @@ const Navbar = ({ onMenuClick, isSidebarOpen }) => {
                             </button>
                         </Link>
 
-                        <Link to={"/upload"} className="lg:hidden">
+                        {/* <Link to={"/upload"} className="lg:hidden">
                             <button className="btn btn-ghost btn-circle **btn-sm**">
                                 <Plus className="h-6 w-6 text-base-content opacity-70"  />
                             </button>
-                        </Link>
+                        </Link> */}
                         
                         {/* Existing Notifications Icon */}
                         <Link to={"/notifications"}>
