@@ -4,7 +4,7 @@ import CreatePost from "../components/CreatePost";
 
 const Post = () => {
   return (
-    <div className="flex gap-6 p-4 sm:p-6 lg:p-8">
+    <div className="flex gap-6 p-4 sm:p-6 lg:p-8 w-auto justify-center align-middle">
       
       {/* Left: Scrollable Feed */}
       {/* 1. flex-1 max-w-full: Allows the feed to take up all available space.
