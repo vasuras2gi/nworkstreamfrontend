@@ -9,7 +9,8 @@ import {
     X, 
     HomeIcon,
     UsersIcon,
-    Plus
+    Plus,
+    PlusCircle
 } from "lucide-react";
 import ThemeSelector from "./ThemeSelector";
 import useLogout from "../hooks/useLogout";
@@ -88,7 +89,7 @@ const Navbar = ({ onMenuClick, isSidebarOpen }) => {
                         <div className="hidden sm:block"> 
                            <ThemeSelector />
                         </div>
-                        
+
                         {/* createPostPage  */}
                         <div>
                             <Link to={"/create-post"}>
