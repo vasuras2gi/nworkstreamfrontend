@@ -99,6 +99,11 @@ const isOwnProfile =
     authUser?.id === user?._id || 
     authUser?._id === user?.id;
 
+    // Debugging ke liye in dono ko console me print karke dekho
+  console.log("Logged In User ID:", authUser?._id || authUser?.id);
+  console.log("Profile Page User ID:", user?._id || user?.id);
+  console.log("Is Own Profile?:", isOwnProfile);
+
   return (
     <div className="min-h-screen flex flex-col items-center py-10 px-4">
       
