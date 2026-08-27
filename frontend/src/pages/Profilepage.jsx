@@ -94,7 +94,7 @@ const ProfilePage = () => {
   }
 
   // Check if the current profile belongs to the logged-in user
-const isOwnProfile = 
+  const isOwnProfile = 
     authUser?._id === user?._id || 
     authUser?.id === user?._id || 
     authUser?._id === user?.id;
