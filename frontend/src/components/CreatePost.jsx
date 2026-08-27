@@ -16,7 +16,7 @@ const CreatePost = () => {
     if (file) formData.append("file", file);
 
     try {
-      await axiosInstance.post("/create-post", formData, {
+      await axiosInstance.post("/create", formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
       alert("Post created successfully!");
