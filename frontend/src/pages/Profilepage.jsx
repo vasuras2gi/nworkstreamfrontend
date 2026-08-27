@@ -94,7 +94,10 @@ const ProfilePage = () => {
   }
 
   // Check if the current profile belongs to the logged-in user
-  const isOwnProfile = authUser?._id === user._id;
+const isOwnProfile = 
+    authUser?._id === user?._id || 
+    authUser?.id === user?._id || 
+    authUser?._id === user?.id;
 
   return (
     <div className="min-h-screen flex flex-col items-center py-10 px-4">
