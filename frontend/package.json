@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "rm -rf package-lock.json && npm install && vite build",
     "start": "vite",
     "lint": "eslint .",
     "preview": "vite preview"
