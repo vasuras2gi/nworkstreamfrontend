@@ -42,6 +42,17 @@ const Sidebar = () => {
         </Link> */}
 
         <Link
+          to="/create-post"
+          className={`btn btn-ghost justify-start w-full gap-3 px-3 normal-case ${
+            currentPath === "/create-post" ? "btn-active" : ""
+          }`}
+        >
+          {/* Using a Plus icon for creating a post */}
+          <svg xmlns="http://www.w3.org/2000/svg" className="size-5 text-base-content opacity-70" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" /></svg>
+          <span>Create Post</span>
+        </Link>
+
+        <Link
           to="/friends"
           className={`btn btn-ghost justify-start w-full gap-3 px-3 normal-case ${
             currentPath === "/friends" ? "btn-active" : ""
