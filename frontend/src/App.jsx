@@ -81,7 +81,7 @@ const App = () => {
             }
           />
           <Route
-            path="/create-post"
+            path="/upload"
             element={
               <Layout showSidebar={true}>
                 <CreatePost />
