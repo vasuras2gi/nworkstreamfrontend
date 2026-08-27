@@ -3,7 +3,8 @@ import useAuthUser from "../hooks/useAuthUser";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 import { completeOnboarding } from "../lib/api";
-import { LoaderIcon, MapPinIcon, ShipWheelIcon, ShuffleIcon } from "lucide-react";
+// ✅ FIX 1: Added CameraIcon to the imports
+import { LoaderIcon, MapPinIcon, ShipWheelIcon, ShuffleIcon, CameraIcon } from "lucide-react";
 import { LANGUAGES, ProgrammingLanguages, jobrole } from "../constants";
 
 const OnboardingPage = () => {
@@ -34,14 +35,13 @@ const OnboardingPage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     onboardingMutation(formState);
   };
 
+  // ✅ FIX 2: Updated to use the DiceBear Lorelei API
   const handleRandomAvatar = () => {
-    const idx = Math.floor(Math.random() * 50) + 1; // 1-100 included
-    // const randomAvatar = `https://avatar.iran.liara.run/public/${idx}.png`;
-    const randomAvatar = `https://xsgames.co/randomusers/assets/avatars/pixel/${idx}.jpg`;
+    const randomSeed = Math.random().toString(36).substring(7);
+    const randomAvatar = `https://api.dicebear.com/10.x/lorelei/svg?seed=${randomSeed}`;
 
     setFormState({ ...formState, profilePic: randomAvatar });
     toast.success("Random profile picture generated!");
@@ -57,12 +57,12 @@ const OnboardingPage = () => {
             {/* PROFILE PIC CONTAINER */}
             <div className="flex flex-col items-center justify-center space-y-4">
               {/* IMAGE PREVIEW */}
-              <div className="size-32 rounded-full bg-base-300 overflow-hidden">
+              <div className="size-32 rounded-full bg-base-300 overflow-hidden border-2 border-gray-600">
                 {formState.profilePic ? (
                   <img
                     src={formState.profilePic}
                     alt="Profile Preview"
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover bg-white"
                   />
                 ) : (
                   <div className="flex items-center justify-center h-full">
@@ -105,11 +105,11 @@ const OnboardingPage = () => {
                 value={formState.bio}
                 onChange={(e) => setFormState({ ...formState, bio: e.target.value })}
                 className="textarea textarea-bordered h-24"
-                placeholder="Tell others about yourself and your language learning goals"
+                placeholder="Tell others about yourself and your goals..."
               />
             </div>
 
-            {/* LANGUAGES */}
+            {/* LANGUAGES & ROLES */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {/* NATIVE LANGUAGE */}
               <div className="form-control">
@@ -131,10 +131,10 @@ const OnboardingPage = () => {
                 </select>
               </div>
 
-              {/* LEARNING LANGUAGE */}
+              {/* JOB ROLE / LEARNING LANGUAGE */}
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text">Who am i</span>
+                  <span className="label-text">Who am I</span>
                 </label>
                 <select
                   name="learningLanguage"
@@ -142,7 +142,7 @@ const OnboardingPage = () => {
                   onChange={(e) => setFormState({ ...formState, learningLanguage: e.target.value })}
                   className="select select-bordered w-full"
                 >
-                  <option value="">Select language you're learning</option>
+                  <option value="">Select your role</option>
                   {jobrole.map((proglang) => (
                     <option key={`learning-${proglang}`} value={proglang.toLowerCase()}>
                       {proglang}
@@ -152,7 +152,7 @@ const OnboardingPage = () => {
               </div>
             </div>
 
-            {/* LOCATION city*/}
+            {/* LOCATION city */}
             <div className="form-control">
               <label className="label">
                 <span className="label-text">City</span>
@@ -169,7 +169,8 @@ const OnboardingPage = () => {
                 />
               </div>
             </div>
-            {/* LOCATION country*/}
+            
+            {/* LOCATION country */}
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Country</span>
@@ -188,8 +189,7 @@ const OnboardingPage = () => {
             </div>
 
             {/* SUBMIT BUTTON */}
-
-            <button className="btn btn-primary w-full" disabled={isPending} type="submit">
+            <button className="btn btn-primary w-full mt-4" disabled={isPending} type="submit">
               {!isPending ? (
                 <>
                   <ShipWheelIcon className="size-5 mr-2" />
