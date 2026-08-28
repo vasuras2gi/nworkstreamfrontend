@@ -4,10 +4,10 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-      "dev": "vite",
-      "build": "npx vite build",
-      "preview": "vite preview"
-    },
+    "dev": "vite",
+    "build": "chmod +x node_modules/.bin/vite && npx vite build",
+    "preview": "vite preview"
+  },
   "dependencies": {},
   "devDependencies": {
     "@eslint/js": "^9.22.0",
