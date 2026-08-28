@@ -3,7 +3,9 @@ import CreatePost from '../components/CreatePost'
 
 const UploadPost = () => {
   return (
-    <CreatePost/>
+    <div className='flex justify-center items-center'>
+      <CreatePost/>
+    </div>
   )
 }
 
