@@ -1,1 +1,0 @@
-import{u as r}from"./useQuery-Bb5pynb5.js";import{e as s}from"./api-DAsqJD8S.js";const a=()=>{const e=r({queryKey:["authUser"],queryFn:s,retry:!1});return{isLoading:e.isLoading,authUser:e.data?.user}};export{a as u};
