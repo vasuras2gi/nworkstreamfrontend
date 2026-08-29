@@ -1,11 +1,11 @@
 @import "tailwindcss";
-@config "../tailwind.config.js";
+@plugin "daisyui";
 
-
+/* Aapka baki ka CSS code yahan niche rahega */
 .create-post-fixed {
-    position: fixed;
-    top: 80px; /* Adjust based on your header height */
-    right: 32px; /* Adjust based on your padding, e.g., 8 units of padding */
+  position: fixed;
+  top: 80px;
+  right: 32px;
 }
 
 .str-chat__channel {
