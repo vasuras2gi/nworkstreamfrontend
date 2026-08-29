@@ -59,7 +59,7 @@ const App = () => {
     // 1. Remove 'h-screen' here. This allows the content to dictate the page height.
     // mycode
     // <div data-theme={theme} className="text-white min-h-screen">
-    <div className="min-h-screen bg-base-100 text-base-content">
+    <div data-theme={theme} className="min-h-screen bg-base-100 text-base-content">
       <Suspense>
         <Routes>
           <Route
