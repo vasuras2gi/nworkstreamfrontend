@@ -8,8 +8,8 @@ const ThemeSelector = () => {
   return (
     <details className="dropdown dropdown-end">
       {/* DROPDOWN TRIGGER */}
-      <summary className="btn btn-ghost btn-circle list-none cursor-pointer flex items-center justify-center">
-        <PaletteIcon className="size-5" />
+      <summary className="btn btn-ghost btn-circle cursor-pointer list-none flex items-center justify-center">
+        <PaletteIcon className="size-5 pointer-events-none" />
       </summary>
 
       <div
@@ -21,22 +21,23 @@ const ThemeSelector = () => {
             <button
               key={themeOption.name}
               type="button"
-              className={`w-full px-4 py-3 rounded-xl flex items-center gap-3 transition-colors ${
+              className={`w-full px-4 py-3 rounded-xl flex items-center gap-3 transition-colors cursor-pointer ${
                 theme === themeOption.name
                   ? "bg-primary/10 text-primary"
                   : "hover:bg-base-content/5"
               }`}
-              onClick={() => {
+              onClick={(e) => {
+                e.preventDefault();
                 setTheme(themeOption.name);
-                // Theme select hote hi dropdown ko automatically band karne ke liye
-                const dropdownElement = document.activeElement.closest("details");
-                if (dropdownElement) dropdownElement.removeAttribute("open");
+                // Dropdown ko smoothly close karne ke liye
+                const detailsElement = e.currentTarget.closest("details");
+                if (detailsElement) detailsElement.removeAttribute("open");
               }}
             >
-              <PaletteIcon className="size-4" />
-              <span className="text-sm font-medium">{themeOption.label}</span>
+              <PaletteIcon className="size-4 pointer-events-none" />
+              <span className="text-sm font-medium pointer-events-none">{themeOption.label}</span>
               {/* THEME PREVIEW COLORS */}
-              <div className="ml-auto flex gap-1">
+              <div className="ml-auto flex gap-1 pointer-events-none">
                 {themeOption.colors.map((color, i) => (
                   <span
                     key={i}
@@ -54,7 +55,6 @@ const ThemeSelector = () => {
 };
 
 export default ThemeSelector;
-
 
 
 
