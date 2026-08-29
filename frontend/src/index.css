@@ -1,5 +1,6 @@
-@import "tailwindcss";
-@plugin "daisyui";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 /* Aapka baki ka CSS code yahan niche rahega */
 .create-post-fixed {
