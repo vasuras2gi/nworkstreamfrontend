@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, useRef, useState } from "react";
 import { axiosInstance } from "../lib/axios";
 
 const CreatePost = () => {
@@ -33,12 +33,12 @@ const CreatePost = () => {
   };
 
   return (
-    <div className="hidden lg:block fixed w-80 h-fit">
-      <div className="bg-base-200 text-base-content p-5 rounded-2xl shadow-xl border border-base-content/10">
-        <h2 className="text-lg font-bold mb-3">Create Post</h2>
-        <form onSubmit={handleSubmit} className="space-y-3">
+    <div className="max-w-2xl mx-auto mt-6 px-4">
+      <div className="bg-base-200 text-base-content p-6 rounded-2xl shadow-xl border border-base-content/15">
+        <h2 className="text-xl font-bold mb-4">Create Post</h2>
+        <form onSubmit={handleSubmit} className="space-y-4">
           <textarea
-            className="w-full p-3 rounded-xl bg-base-100 text-base-content border border-base-content/20 focus:outline-none focus:ring-2 focus:ring-primary resize-none h-28"
+            className="w-full p-3 rounded-xl bg-base-100 text-base-content border border-base-content/20 focus:outline-none focus:ring-2 focus:ring-primary resize-none h-32"
             placeholder="What's on your mind?"
             value={text}
             ref={textInputRef}
@@ -48,7 +48,7 @@ const CreatePost = () => {
           <input 
             ref={fileInputRef} 
             type="file" 
-            className="file-input file-input-bordered file-input-sm file-input-primary w-full bg-base-100 text-base-content"
+            className="file-input file-input-bordered file-input-primary w-full bg-base-100 text-base-content"
             onChange={(e) => setFile(e.target.files[0])} 
           />
 
@@ -56,7 +56,7 @@ const CreatePost = () => {
             type="submit"
             className="btn btn-primary w-full rounded-xl text-white font-semibold cursor-pointer"
           > 
-            Upload
+            Upload Post
           </button>
         </form>
       </div>
