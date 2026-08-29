@@ -1,5 +1,5 @@
 import { Navigate, Route, Routes } from "react-router";
-import React, { lazy, Suspense,useEffect } from 'react'
+import React, { lazy, Suspense} from 'react'
 // import React, { lazy, Suspense } from 'react' isse uncomment kr lena
 
 const SignUpPage = lazy(() => import('./pages/SignUpPage.jsx'));

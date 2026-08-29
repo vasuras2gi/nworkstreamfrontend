@@ -1,7 +1,6 @@
 @import "tailwindcss";
 
 
-
 .create-post-fixed {
     position: fixed;
     top: 80px; /* Adjust based on your header height */
