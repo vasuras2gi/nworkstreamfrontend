@@ -1,5 +1,5 @@
 import { Navigate, Route, Routes } from "react-router";
-import React, { lazy, Suspense } from 'react'
+import React, { lazy, Suspense,useEffect } from 'react'
 // import React, { lazy, Suspense } from 'react' isse uncomment kr lena
 
 const SignUpPage = lazy(() => import('./pages/SignUpPage.jsx'));
@@ -50,6 +50,10 @@ const App = () => {
   const isOnboarded = authUser?.isOnboarded;
 
   if (isLoading) return <PageLoader />;
+  
+  // useEffect(() => {
+  //   document.documentElement.setAttribute("data-theme", theme);
+  // }, [theme]);
 
   return (
     // 1. Remove 'h-screen' here. This allows the content to dictate the page height.
