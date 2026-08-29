@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router";
+import { useParams } from "react-router-dom";
 import { axiosInstance } from "../lib/axios";
 // IMPORTANT: Import your auth hook so we know if the logged-in user is viewing their OWN profile
 import useAuthUser from "../hooks/useAuthUser"; 
