@@ -85,7 +85,8 @@ const Feed = () => {
   let userid = null;
   if (token) {
     try {
-      userid = jwtDecode.default(token).userId;
+      // userid = jwtDecode.default(token).userId;
+      userid = jwtDecode(token).userId;
     } catch (error) {
       console.error("Invalid token:", error);
     }
