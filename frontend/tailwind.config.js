@@ -9,7 +9,7 @@ export default {
   plugins: [daisyui],
   daisyui: {
     themes: [
-      // 1. Standard Built-in Themes (Jo string format me direct chalte hain)
+      // 1. Standard Built-in Themes
       "light",
       "dark",
       "cyberpunk",
@@ -20,42 +20,50 @@ export default {
       "aqua",
       "nord",
       
-      // 2. Custom Premium Themes (Inhe object banakar colors define karne padte hain)
+      // 2. Custom Premium Themes (Har theme ka alag object hona zaroori hai)
       {
         midnight: {
-          "base-100": "#0f172a",    // Deep slate background
-          "primary": "#6366f1",     // Indigo
-          "secondary": "#06b6d4",   // Cyan
-          "base-content": "#f8fafc",// White text
-          "neutral": "#1e293b",     // Card/Section background
+          "base-100": "#0f172a",    
+          "primary": "#6366f1",     
+          "secondary": "#06b6d4",   
+          "base-content": "#f8fafc",
+          "neutral": "#1e293b",     
         },
+      },
+      {
         executive: {
-          "base-100": "#ffffff",    // Clean white background
-          "primary": "#0f172a",     // Navy
-          "secondary": "#cbd5e1",   // Soft slate
-          "base-content": "#1e293b",// Charcoal text
-          "neutral": "#f1f5f9",     // Light gray for cards
+          "base-100": "#ffffff",    
+          "primary": "#0f172a",     
+          "secondary": "#cbd5e1",   
+          "base-content": "#1e293b",
+          "neutral": "#f1f5f9",     
         },
+      },
+      {
         velvet: {
-          "base-100": "#171114",    // Dark luxury background
-          "primary": "#be123c",     // Rose
-          "secondary": "#f59e0b",   // Amber
-          "base-content": "#fff1f2",// Soft pink text
-          "neutral": "#2a151b",     // Slightly lighter dark card
+          "base-100": "#171114",    
+          "primary": "#be123c",     
+          "secondary": "#f59e0b",   
+          "base-content": "#fff1f2",
+          "neutral": "#2a151b",     
         },
+      },
+      {
         matrix: {
-          "base-100": "#000000",    // Pure black background
-          "primary": "#10b981",     // Neon green
-          "secondary": "#059669",   // Emerald
-          "base-content": "#e2e8f0",// Light slate text
-          "neutral": "#111827",     // Dark gray card
+          "base-100": "#000000",    
+          "primary": "#10b981",     
+          "secondary": "#059669",   
+          "base-content": "#e2e8f0",
+          "neutral": "#111827",     
         },
+      },
+      {
         hacker: {
-          "base-100": "#0d1117",    // GitHub dark style background
-          "primary": "#58a6ff",     // Blue
-          "secondary": "#8b949e",   // Gray
-          "base-content": "#c9d1d9",// Text
-          "neutral": "#21262d",     // Border/Card color
+          "base-100": "#0d1117",    
+          "primary": "#58a6ff",     
+          "secondary": "#8b949e",   
+          "base-content": "#c9d1d9",
+          "neutral": "#21262d",     
         },
       },
     ],
