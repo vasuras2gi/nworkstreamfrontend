@@ -2,16 +2,16 @@ import React, { useState, useEffect, useCallback, memo } from "react";
 import { fetchPosts } from "../lib/api";
 import { Heart, MessageCircle, Share2 } from "lucide-react";
 import useToggleLike from "../hooks/useLike";
-import {jwtDecode} from "jwt-decode";
+import { jwtDecode } from "jwt-decode";
 import { Link } from "react-router-dom";
-import { Virtuoso } from "react-virtuoso"; // 1. Import Virtuoso
+import { Virtuoso } from "react-virtuoso";
 
 const POSTS_PER_LOAD = 10;
 
-// 2. Extract Post into a separate memoized component to prevent useless re-renders
+// Memoized PostItem component updated with dynamic DaisyUI theme classes
 const PostItem = memo(({ post, userid, onLike }) => {
   return (
-    <div className="bg-gray-900 text-white p-4 rounded-2xl shadow-md border border-gray-700 mb-4">
+    <div className="bg-base-200 text-base-content p-4 rounded-2xl shadow-md border border-base-content/15 mb-4 transition-colors">
       {/* User Info */}
       <Link to={`/profile/${post.user?._id}`}>
         <div className="flex items-center space-x-3 mb-3">
@@ -19,13 +19,13 @@ const PostItem = memo(({ post, userid, onLike }) => {
             src={post.user?.profilePic || "https://via.placeholder.com/40"}
             alt="user avatar"
             className="w-10 h-10 rounded-full object-cover"
-            loading="lazy" // 3. Native lazy loading for images
+            loading="lazy"
           />
           <div>
             <p className="font-semibold text-sm">
               {post.user?.fullName || "Unknown User"}
             </p>
-            <p className="text-xs text-gray-400">{post.user?.email}</p>
+            <p className="text-xs text-base-content/60">{post.user?.email}</p>
           </div>
         </div>
       </Link>
@@ -56,12 +56,12 @@ const PostItem = memo(({ post, userid, onLike }) => {
       </div>
 
       {/* Actions */}
-      <div className="flex justify-between text-gray-400 text-sm mt-2">
+      <div className="flex justify-between text-base-content/70 text-sm mt-2">
         <button
           onClick={() => onLike(post._id)}
-          className={`flex items-center space-x-1 transition-colors ${
+          className={`flex items-center space-x-1 transition-colors cursor-pointer ${
             post.likes?.includes(userid)
-              ? "text-pink-500"
+              ? "text-pink-500 font-semibold"
               : "hover:text-pink-500"
           }`}
         >
@@ -85,7 +85,6 @@ const Feed = () => {
   let userid = null;
   if (token) {
     try {
-      // userid = jwtDecode.default(token).userId;
       userid = jwtDecode(token).userId;
     } catch (error) {
       console.error("Invalid token:", error);
@@ -112,9 +111,7 @@ const Feed = () => {
   // Initial load only
   useEffect(() => {
     loadPosts();
-  }, []); // Removed loadPosts from dependencies to prevent accidental double-fetching on mount
-
-  // 4. Removed the manual scroll event listener completely!
+  }, []);
 
   const handleLike = useCallback((postId) => {
     setPosts((prev) =>
@@ -130,16 +127,15 @@ const Feed = () => {
       )
     );
     toggleLikeMutation(postId);
-  }, [userid, toggleLikeMutation]); // Wrapped in useCallback
+  }, [userid, toggleLikeMutation]);
 
   return (
-    <div className="max-w-2xl mx-auto mt-6">
-      {/* 5. The Virtuoso component replaces your map map() function */}
+    <div className="max-w-2xl mx-auto mt-6 px-4">
       <Virtuoso
-        useWindowScroll // Uses the whole browser window for scrolling, rather than a constrained div
+        useWindowScroll
         data={posts}
-        endReached={loadPosts} // Automatically triggers when near the bottom!
-        overscan={400} // Renders a few items off-screen to prevent flickering while scrolling fast
+        endReached={loadPosts}
+        overscan={400}
         itemContent={(index, post) => (
           <PostItem 
             key={post._id} 
@@ -149,12 +145,11 @@ const Feed = () => {
           />
         )}
         components={{
-          // Handles the loading and end-of-feed UI seamlessly within the list
           Footer: () => (
             <div className="pb-8 pt-4">
-              {isLoading && <p className="text-center text-blue-400">Loading more posts...</p>}
+              {isLoading && <p className="text-center text-primary font-medium">Loading more posts...</p>}
               {!hasMore && posts.length > 0 && (
-                <p className="text-center text-gray-500">You've reached the end of the feed.</p>
+                <p className="text-center text-base-content/60">You've reached the end of the feed.</p>
               )}
             </div>
           )
@@ -162,13 +157,199 @@ const Feed = () => {
       />
       
       {!isLoading && posts.length === 0 && (
-         <p className="text-center text-gray-400">No posts yet</p>
+         <p className="text-center text-base-content/60 py-10">No posts yet</p>
       )}
     </div>
   );
 };
 
 export default Feed;
+
+
+
+
+
+
+
+
+// import React, { useState, useEffect, useCallback, memo } from "react";
+// import { fetchPosts } from "../lib/api";
+// import { Heart, MessageCircle, Share2 } from "lucide-react";
+// import useToggleLike from "../hooks/useLike";
+// import {jwtDecode} from "jwt-decode";
+// import { Link } from "react-router-dom";
+// import { Virtuoso } from "react-virtuoso"; // 1. Import Virtuoso
+
+// const POSTS_PER_LOAD = 10;
+
+// // 2. Extract Post into a separate memoized component to prevent useless re-renders
+// const PostItem = memo(({ post, userid, onLike }) => {
+//   return (
+//     <div className="bg-gray-900 text-white p-4 rounded-2xl shadow-md border border-gray-700 mb-4">
+//       {/* User Info */}
+//       <Link to={`/profile/${post.user?._id}`}>
+//         <div className="flex items-center space-x-3 mb-3">
+//           <img
+//             src={post.user?.profilePic || "https://via.placeholder.com/40"}
+//             alt="user avatar"
+//             className="w-10 h-10 rounded-full object-cover"
+//             loading="lazy" // 3. Native lazy loading for images
+//           />
+//           <div>
+//             <p className="font-semibold text-sm">
+//               {post.user?.fullName || "Unknown User"}
+//             </p>
+//             <p className="text-xs text-gray-400">{post.user?.email}</p>
+//           </div>
+//         </div>
+//       </Link>
+
+//       {/* Post Content */}
+//       <div className="mb-3">
+//         <p className="text-base">{post.text}</p>
+
+//         {post.media && (
+//           <div className="mt-3">
+//             {post.media.data && post.media.contentType ? (
+//               <img
+//                 className="rounded-xl max-h-72 object-cover w-full"
+//                 src={`data:${post.media.contentType};base64,${post.media.data}`}
+//                 alt="post media"
+//                 loading="lazy"
+//               />
+//             ) : (
+//               <img
+//                 className="rounded-xl max-h-72 object-cover w-full"
+//                 src={post.media}
+//                 alt="post media"
+//                 loading="lazy"
+//               />
+//             )}
+//           </div>
+//         )}
+//       </div>
+
+//       {/* Actions */}
+//       <div className="flex justify-between text-gray-400 text-sm mt-2">
+//         <button
+//           onClick={() => onLike(post._id)}
+//           className={`flex items-center space-x-1 transition-colors ${
+//             post.likes?.includes(userid)
+//               ? "text-pink-500"
+//               : "hover:text-pink-500"
+//           }`}
+//         >
+//           <Heart className="w-4 h-4" />
+//           <span>{post.likes?.length || 0} Likes</span>
+//         </button>
+//       </div>
+//     </div>
+//   );
+// });
+
+// const Feed = () => {
+//   const [posts, setPosts] = useState([]);
+//   const { toggleLikeMutation } = useToggleLike();
+//   const [isLoading, setIsLoading] = useState(false);
+//   const [hasMore, setHasMore] = useState(true);
+//   const [nextCursor, setNextCursor] = useState(null);
+
+//   // Decode user ID safely
+//   const token = localStorage.getItem("token");
+//   let userid = null;
+//   if (token) {
+//     try {
+//       // userid = jwtDecode.default(token).userId;
+//       userid = jwtDecode(token).userId;
+//     } catch (error) {
+//       console.error("Invalid token:", error);
+//     }
+//   }
+
+//   const loadPosts = useCallback(async () => {
+//     if (isLoading || !hasMore) return;
+
+//     setIsLoading(true);
+//     try {
+//       const { posts: newPosts, nextCursor: newCursor, hasMore: moreAvailable } = await fetchPosts(nextCursor, POSTS_PER_LOAD);
+//       setPosts((prev) => [...prev, ...newPosts]);
+//       setNextCursor(newCursor);
+//       setHasMore(moreAvailable);
+//     } catch (error) {
+//       console.error("Error loading posts:", error);
+//       setHasMore(false);
+//     } finally {
+//       setIsLoading(false);
+//     }
+//   }, [isLoading, hasMore, nextCursor]);
+
+//   // Initial load only
+//   useEffect(() => {
+//     loadPosts();
+//   }, []); // Removed loadPosts from dependencies to prevent accidental double-fetching on mount
+
+//   // 4. Removed the manual scroll event listener completely!
+
+//   const handleLike = useCallback((postId) => {
+//     setPosts((prev) =>
+//       prev.map((post) =>
+//         post._id === postId
+//           ? {
+//               ...post,
+//               likes: post.likes?.includes(userid)
+//                 ? post.likes.filter((id) => id !== userid)
+//                 : [...(post.likes || []), userid],
+//             }
+//           : post
+//       )
+//     );
+//     toggleLikeMutation(postId);
+//   }, [userid, toggleLikeMutation]); // Wrapped in useCallback
+
+//   return (
+//     <div className="max-w-2xl mx-auto mt-6">
+//       {/* 5. The Virtuoso component replaces your map map() function */}
+//       <Virtuoso
+//         useWindowScroll // Uses the whole browser window for scrolling, rather than a constrained div
+//         data={posts}
+//         endReached={loadPosts} // Automatically triggers when near the bottom!
+//         overscan={400} // Renders a few items off-screen to prevent flickering while scrolling fast
+//         itemContent={(index, post) => (
+//           <PostItem 
+//             key={post._id} 
+//             post={post} 
+//             userid={userid} 
+//             onLike={handleLike} 
+//           />
+//         )}
+//         components={{
+//           // Handles the loading and end-of-feed UI seamlessly within the list
+//           Footer: () => (
+//             <div className="pb-8 pt-4">
+//               {isLoading && <p className="text-center text-blue-400">Loading more posts...</p>}
+//               {!hasMore && posts.length > 0 && (
+//                 <p className="text-center text-gray-500">You've reached the end of the feed.</p>
+//               )}
+//             </div>
+//           )
+//         }}
+//       />
+      
+//       {!isLoading && posts.length === 0 && (
+//          <p className="text-center text-gray-400">No posts yet</p>
+//       )}
+//     </div>
+//   );
+// };
+
+// export default Feed;
+
+
+
+
+
+
+
 
 
 
