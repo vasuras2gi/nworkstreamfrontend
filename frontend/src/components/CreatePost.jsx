@@ -1,4 +1,4 @@
-import React, useRef, useState } from "react";
+import React, {useRef, useState } from "react";
 import { axiosInstance } from "../lib/axios";
 
 const CreatePost = () => {
