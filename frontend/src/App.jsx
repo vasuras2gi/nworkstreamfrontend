@@ -1,5 +1,5 @@
 import { Navigate, Route, Routes } from "react-router-dom";
-import React, { lazy, Suspense} from 'react'
+import{ lazy, Suspense} from 'react'
 // import React, { lazy, Suspense } from 'react' isse uncomment kr lena
 
 const SignUpPage = lazy(() => import('./pages/SignUpPage.jsx'));
@@ -58,7 +58,8 @@ const App = () => {
   return (
     // 1. Remove 'h-screen' here. This allows the content to dictate the page height.
     // mycode
-    <div data-theme={theme} className="text-white min-h-screen"> 
+    // <div data-theme={theme} className="text-white min-h-screen">
+    <div className="min-h-screen bg-base-100 text-base-content">
       <Suspense>
         <Routes>
           <Route
